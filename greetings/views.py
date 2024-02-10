@@ -5,4 +5,4 @@ def greetings(request):
    return HttpResponse("Hello World!")
 
 def greetings_with_name(request, name):
-    return  HttpResponse(f"Hello {name}!")
+    return HttpResponse(f"Hello {name}!")
