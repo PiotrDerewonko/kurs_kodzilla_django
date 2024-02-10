@@ -1,6 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-
+from django.template import loader
 
 def math(request):
     return HttpResponse("Tu będzie matma")
@@ -9,42 +8,30 @@ def math(request):
 def add(request, a, b):
     a, b = int(a), int(b)
     wynik = a + b
-    c = {"a": a, "b": b, "operacja": "+", "wynik": wynik}
-    return render(
-        request=request,
-        template_name="maths/main.html",
-        context=c
-    )
+    t = loader.get_template("maths/operation.html")
+    c = {"a": a, "b": b, "operacja": "+", "wynik": wynik, "title": "dodawanie"}
+    return HttpResponse(t.render(c))
 
 
 def sub(request, a, b):
     a, b = int(a), int(b)
     wynik = a - b
-    c = {"a": a, "b": b, "operacja": "-", "wynik": wynik}
-    return render(
-        request=request,
-        template_name="maths/main.html",
-        context=c
-    )
+    t = loader.get_template("maths/operation.html")
+    c = {"a": a, "b": b, "operacja": "-", "wynik": wynik, "title": "dodawanie"}
+    return HttpResponse(t.render(c))
 
 
 def mul(request, a, b):
     a, b = int(a), int(b)
     wynik = a * b
-    c = {"a": a, "b": b, "operacja": "*", "wynik": wynik}
-    return render(
-        request=request,
-        template_name="maths/main.html",
-        context=c
-    )
+    t = loader.get_template("maths/operation.html")
+    c = {"a": a, "b": b, "operacja": "*", "wynik": wynik, "title": "dodawanie"}
+    return HttpResponse(t.render(c))
 
 
 def div(request, a, b):
     a, b = int(a), int(b)
     wynik = a / b
-    c = {"a": a, "b": b, "operacja": "/", "wynik": wynik}
-    return render(
-        request=request,
-        template_name="maths/main.html",
-        context=c
-    )
+    t = loader.get_template("maths/operation.html")
+    c = {"a": a, "b": b, "operacja": "/", "wynik": wynik, "title": "dodawanie"}
+    return HttpResponse(t.render(c))
